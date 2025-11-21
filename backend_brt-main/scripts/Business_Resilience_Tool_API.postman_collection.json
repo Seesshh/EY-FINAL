@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "8a2e3c1d-5f6a-4b7c-8d9e-0f1c2b3a4d5e",
+		"name": "Business Resilience Tool API",
+		"description": "API collection for testing the Business Resilience Tool endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin@acme.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "OAuth2 compatible token login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login with JSON",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@acme.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login/access-token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								"access-token"
+							]
+						},
+						"description": "Login with JSON body"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication endpoints"
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "Get Organizations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/organizations",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						},
+						"description": "Get list of organizations"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Organization",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Organization\",\n    \"industry\": \"Healthcare\",\n    \"size\": 250,\n    \"address\": \"123 Health St, Boston, MA 02115\",\n    \"contact_email\": \"contact@neworg.com\",\n    \"contact_phone\": \"617-555-1234\",\n    \"website\": \"https://neworg.com\",\n    \"description\": \"A healthcare organization focused on patient care.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/organizations",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						},
+						"description": "Create a new organization"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/organizations/{{organization_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization_id}}"
+							]
+						},
+						"description": "Get organization by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Organization Name\",\n    \"description\": \"Updated description for the organization.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/organizations/{{organization_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization_id}}"
+							]
+						},
+						"description": "Update an organization"
+					},
+					"response": []
+				}
+			],
+			"description": "Organization management endpoints"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Get list of users"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"newuser@acme.com\",\n    \"password\": \"password123\",\n    \"first_name\": \"New\",\n    \"last_name\": \"User\",\n    \"is_active\": true,\n    \"is_superuser\": false,\n    \"org_id\": \"{{organization_id}}\",\n    \"role\": \"Analyst\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Create a new user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "Get current user information"
+					},
+					"response": []
+				}
+			],
+			"description": "User management endpoints"
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Get Documents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents"
+							],
+							"query": [
+								{
+									"key": "document_type",
+									"value": "POLICY",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get list of documents"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Security Policy\",\n    \"document_type\": \"POLICY\",\n    \"description\": \"Updated security policy for remote work\",\n    \"org_id\": \"{{organization_id}}\",\n    \"owner_email\": \"admin@acme.com\",\n    \"tags\": [\"security\", \"remote work\", \"policy\"],\n    \"content\": \"# Security Policy for Remote Work\\n\\n## Overview\\nThis policy outlines security requirements for employees working remotely.\\n\\n## Requirements\\n1. Use VPN for all company network access\\n2. Keep software updated\\n3. Use company-approved security tools\\n4. Report security incidents immediately\",\n    \"file_format\": \"markdown\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents"
+							]
+						},
+						"description": "Create a new document"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/documents/{{document_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents",
+								"{{document_id}}"
+							]
+						},
+						"description": "Get document by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document Content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/documents/{{document_id}}/content",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents",
+								"{{document_id}}",
+								"content"
+							]
+						},
+						"description": "Get document content from MongoDB"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Documents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": \"security policy\",\n    \"document_type\": \"POLICY\",\n    \"limit\": 10\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/documents/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents",
+								"search"
+							]
+						},
+						"description": "Search documents using semantic search"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document Summary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/documents/{{document_id}}/summary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"documents",
+								"{{document_id}}",
+								"summary"
+							]
+						},
+						"description": "Get document summary using LLM"
+					},
+					"response": []
+				}
+			],
+			"description": "Document management endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-save the token from login responses",
+					"if (pm.response.code === 200 && pm.response.json().access_token) {",
+					"    pm.environment.set(\"access_token\", pm.response.json().access_token);",
+					"    console.log(\"Access token saved to environment\");",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "organization_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "document_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

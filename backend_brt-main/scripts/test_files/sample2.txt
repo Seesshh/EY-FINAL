@@ -1,0 +1,39 @@
+Standard Operating Procedure (SOP)
+
+Title: Data Management Process
+Document ID: SOP-DM-2023-01
+Version: 1.2
+Last Updated: 2023-09-15
+
+Purpose:
+This Standard Operating Procedure (SOP) establishes guidelines for consistent data management practices across the organization. It ensures data integrity, security, and compliance with relevant regulations.
+
+Scope:
+This procedure applies to all employees who handle, process, or manage company data in any form.
+
+Responsibilities:
+1. Data Owners: Responsible for data classification and access permissions
+2. Data Stewards: Ensure day-to-day compliance with this procedure
+3. IT Department: Implement technical measures to enforce this procedure
+4. Employees: Follow the guidelines when handling company data
+
+Procedure:
+1. Data Classification
+   - Confidential: Highly sensitive information requiring strict controls
+   - Internal Use: Non-sensitive, business-related information
+   - Public: Information approved for external distribution
+
+2. Data Storage
+   - Store confidential data only on approved company systems
+   - Encrypt sensitive data when at rest and in transit
+   - Regularly backup critical data according to retention policies
+
+3. Data Sharing
+   - Use secure transfer methods for confidential information
+   - Verify recipient identity before sharing sensitive data
+   - Obtain management approval for sharing confidential data externally
+
+4. Data Retention
+   - Retain data according to the company's data retention schedule
+   - Securely delete expired data following approved procedures
+   - Document all data deletion activities for audit purposes

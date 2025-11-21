@@ -1,0 +1,13 @@
+
+# Business Plan
+
+## Executive Summary
+This is a sample business plan for testing purposes.
+
+## Market Analysis
+The market for this product is growing at 15% annually.
+
+## Financial Projections
+Year 1: $100,000
+Year 2: $250,000
+Year 3: $500,000
